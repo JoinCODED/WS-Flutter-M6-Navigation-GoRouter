@@ -1,14 +1,10 @@
-1. Download the starter project from GitHub, then open the project by using the VS Code, and get the packages.
-
-   https://github.com/Northwest-content/flutter_movie_app
-
-2. We are still developing the movie app that we developed earlier.
-3. A good practice is to structure the files and folders in an organized way so that it is easier for us to develop the app.
-4. Because we will have more than one screen, we will create a folder that holds all the screen files on the app, and we will name this folder **“pages”**. Inside the **lib** folder create a **“pages”** folder.
-5. Also, because there can be more than one model inside our app, it is better to make a folder called “models” which will hold all the **models** for the app. For example, in our **movie** app, we have one model called a movie. Inside the lib folder create a **“models”** folder.
-6. Then, move the **movie.dart** file inside **models** folder.
-7. Inside **pages** folder, create a new file and name it **“home_page.dart”**
-8. Then, cut the **HomePage** class and **\_HomePageState** class, paste it inside the **home_page.dart** file.
+1. Fork and clone the starter point of the project from [GitHub](https://github.com/Northwest-content/flutter_movie_app), open it in the VS Code, and get the packages.
+2. We will structure the files and folders in a way that makes it easier for us to develop the app.
+3. Since we will have more than one screen, we will create a folder named **pages** inside the **lib** folder. This folder will hold all the screens files in the app.
+4. Since there might be more than one model inside the app, it is better to make a folder called **models** which holds all the **models** in the app.
+5. Inside the **models** folder, create a file named **movie.dart**.
+6. Inside the **pages** folder, create a file named **“home_page.dart”**
+7. Cut the **HomePage** and **\_HomePageState** classes and paste them inside the **home_page.dart** file.
 
 ```dart
 class HomePage extends StatefulWidget {
@@ -90,14 +86,14 @@ class _HomePageState extends State<HomePage> {
 }
 ```
 
-9. Import the **material.dart** file & **movie.dart** file inside the **home_page.dart** file to remove the error that inside the **home_page.dart** file.
+8. Import the **material.dart** & **movie.dart** files inside the **home_page.dart** file to get rid of the error there.
 
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app_starter/models/movie.dart';
 ```
 
-10. Inside the **main.dart**, you will find one error because we need to import the **HomePage** class inside **main.dart** file. So, import the **home_page.dart** file.
+9. Import the **HomePage** class inside **main.dart** file.
 
 ```dart
 import 'package:flutter_movie_app_starter/pages/home_page.dart';

@@ -1,16 +1,23 @@
-First, we need to add a new package to our project. run this command in the terminal:
+13. Run the command below to get the `go_router` package:
 
 ```shell
 flutter pub add go_router
 ```
 
-Then, in your `main.dart` we need to import our new package to be able to use it:
+14. In the `main.dart` file, import the new package to be able to use it:
 
 ```dart
 import 'package:go_router/go_router.dart';
 ```
 
-We need to create a new instance of our router:
+To use the `go_router` package, there are two main classes you need to use:
+
+- GoRouter.
+- GoRoute.
+
+By creating the `GoRouter` class, you can provide an initial route and the routes you need for each screen.
+
+Let's start implementing the router. First, we will create a variable called `_router` that holds the instance of the `GoRouter` class:
 
 ```dart
   void main() {
@@ -29,11 +36,13 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  final _router = GoRouter();
+  final _router = GoRouter();  // HERE
 }
 ```
 
-Inside our `_router` instance, we will define our two routes, the `home` route and the `MoviePage` route.
+`GoRouter` uses a `GoRoute` class which contains a path — like a URL, an optional name that you can use instead of paths, and either a page builder that returns a page or a redirect handler that redirects you to another route.
+
+15. Inside the `_router` instance, define two routes: the `home` and the `MoviePage` routes.
 
 ```dart
   final _router = GoRouter(
@@ -50,16 +59,17 @@ Inside our `_router` instance, we will define our two routes, the `home` route a
   );
 ```
 
-The route that have the path of `/` will always be the home page of our application.
+> Remember that all the paths are always defined as strings.
+> The route with the path `/` will always be the home page of the application.
 
-Import the `MoviePage` into this file:
+16. Import the `MoviePage` and `HomePage` into the `main.dart` file:
 
 ```dart
 import 'package:movies_app/pages/home_page.dart';
 import 'package:movies_app/pages/movie_page.dart';
 ```
 
-Now instead of returning a `MaterialApp` from our root widget, we will return a `MaterialApp.router`:
+17. Replace the `MaterialApp` with the `MaterialApp.router`:
 
 ```dart
   @override
@@ -72,4 +82,6 @@ Now instead of returning a `MaterialApp` from our root widget, we will return a 
 
 ```
 
-We finished setting up our routes and paths.
+> **Note:** Creating a `GoRouter` gives you a `RouterDelegate` and a `RouterInformationParser` for free.
+
+We finished setting up the routes and paths for the screens.
