@@ -1,35 +1,35 @@
-Right now when you click any of the movie tiles, you will always see the Toy Story data, and to solve this issue, we need to pass the movie data from the home page to the movie page.
+Right now, when you click any of the movie tiles, you will always see the Toy Story data, and to solve this issue, you need to pass the movie data from the home page to the movie page.
 
 ![image](https://user-images.githubusercontent.com/24327781/142048646-087d0774-0602-42c7-b364-7673e4881f4b.gif)
 
-28. To pass the data from one page to other pages, you will do that with just three steps. The first step is creating a variable on the page you want to transfer data to; In our case, we want to transfer data from the home page to the movie page, so we will create the variable inside the movie page (**MoviePage**).
+To pass data from a specific file to other files in Flutter, you have to create a variable in the page where you want to receive the transferred data in order to be able to store it in this variable.
 
-Also, we should specify the data we want to transfer, in our case we want to pass the Movie object to it. Above the build method, add this variable
+24. Create a variable of the `Movie` class type and call it movie:
 
 ```dart
 final Movie movie; // <- Here
-
 
   @override
   Widget build(BuildContext context) {
 ```
 
-Here, we declared a new movie variable, and its type is **Movie** class. Also, note here we did not declare it with an initial value.
+Here, we declared a new movie variable of the **Movie** class type.
+**Note:** we did not declare it with an initial value.
 
-29. Since we used the **Movie** type class inside the **MoviePage** class, we need to import the **movie.dart** file.
+25. Import the **movie.dart** file, because we are using the Movie class as a type here.
 
 ```dart
 import 'package:flutter_movie_app_starter/models/movie.dart';
 ```
 
-30. The second step is to create a constructor inside the **MoviePage** class because we will use it later to pass the **Movie** object through it. To create the constructor easily, we can use the Vs Code shortcut.
+26. Create a constructor inside the **MoviePage** class to get the **Movie** object through. To create the constructor easily, use the Vs Code shortcut.
 
-Go to the final variable movie, and then click
+Go to the final variable movie, and click:
 
 - Mac: Command + .
 - Windows: Ctrl + .
 
-Then click **Generate constructor**,
+Then, choose **Generate constructor**.
 
 ![constructor](https://lh6.googleusercontent.com/v5bYq7OSmq2ftlIfKo4JNm3b7kgyDLXdoArMe5AVvYWyjd6zxAHOyYFCqz1TYwwsCBm5bghE9UZ5DdQqU-Fdop7k2E91z31OTm7yLfFwbeZd58Dv0d_gb0SfBF8_noRci5gDEtpw)
 
@@ -40,9 +40,7 @@ Then click **Generate constructor**,
   }) : super(key: key);
 ```
 
-Here, we created a constructor for the **MoviePage**, and we typed the name of the variable that we created which is the **movie** variable.
-
-31. Also, note here the **required** keyword that was typed before the movie variable, this keyword tells the user when you declare the **MoviePage** class on another dart file, you need to pass the movie object inside the **MoviePage** class.
+Here, we created a constructor for the **MoviePage**, which contains: the **required** keyword that notifies you to pass the movie object when you call the movie class in any dart files, and the name and type of the variable that we created.
 
 ```dart
  const MoviePage({
@@ -51,16 +49,7 @@ Here, we created a constructor for the **MoviePage**, and we typed the name of t
   }) : super(key: key);
 ```
 
-Because of this **required** keyword, we got an error on the **main.dart**, This error tells us that we need to pass the **movie** object inside the **MoviePage** widget.
-
-```dart
-      GoRoute(
-        path: '/movie',
-        builder: (context, state) => MoviePage(), // error
-      ),
-```
-
-To fix it, pass the movie object inside it like this,
+Since we used the **required** keyword, we have to pass the **movie** object to the **MoviePage** widget in the route inside the `main.dart` file.
 
 ```dart
       GoRoute(
@@ -69,17 +58,20 @@ To fix it, pass the movie object inside it like this,
       ),
 ```
 
-32. The last step we need to do, is to navigate to our `home_page.dart` push function, and pass the movie under a property named `extra`:
+One thing left to do, you need to pass the movie to the `extra` named argument inside the `GoRouter.push` method in the `home_page.dart` file:
 
 ```dart
     GoRouter.of(context).push('/movie', extra: movies[index]),
+
 ```
 
-Here, we passed the **movies** list variable, but also note here that we did not pass the movies list variable completely, we just passed one single object of the **movies** list variable, and we did that by using the **index** with the **movies** list variable.
+Note that we did not pass the whole movies list, we passed one single object of the **movies** list variable using the index.
 
-33. Thus, we finished the process of transferring data from the **home** page to the **movie** page. Now let's use the data that we transferred to the data page.
+We finished the process of transferring data from the **home** page to the **movie** page.
 
-Replace the **build** method with
+Now, let's use the transferred data in the `movie_page.dart`:
+
+27. Replace the **build** method with the code below:
 
 ```dart
 @override
@@ -132,8 +124,8 @@ Replace the **build** method with
   }
 ```
 
-Here, we used the **movie** variable that we declare, and on each widget, we use the appropriate properties that were inside the **Movie** class; such as the **movie.name** and **movie.rating**
+We used the **movie** variable that we declared, and in each widget, we used the appropriate properties that were inside the **Movie** class, such as the **movie.name** and **movie.rating** properties.
 
 ## Exercise
 
-- create a **brief** property, and use it inside your App.
+- Create a **brief** property, and use it inside your app.
