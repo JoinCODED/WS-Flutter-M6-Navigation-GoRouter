@@ -1,6 +1,6 @@
 1. Download the starter project from GitHub, then open the project by using the VS Code, and get the packages.
 
-   https://github.com/Northwest-content/flutter_movie_app
+   https://github.com/JoinCODED/flutter_movie_app
 
 2. We are still developing the movie app that we developed earlier.
 3. A good practice is to structure the files and folders in an organized way so that it is easier for us to develop the app.
